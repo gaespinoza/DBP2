@@ -135,11 +135,11 @@ public class gymGen {
         }
     }
 
-    private static String[] createTeam(PrintWriter out, String[] gymnasts, int curr){
-        for (int i=0; i<5; i++){
+    // private static String[] createTeam(PrintWriter out, String[] gymnasts, int curr){
+    //     for (int i=0; i<5; i++){
 
-        }
-    }
+    //     }
+    // }
 
     // private static void createLeague(PrintWriter out){
     //     String[] gymnasts = String[1000];
