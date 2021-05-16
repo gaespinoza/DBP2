@@ -3,14 +3,13 @@ create table users
         username                varchar(50)not null,
         email                   varchar(50)not null,
         password                varchar(50)not null,
-        permissions             boolean,
         primary key (ID)
         );
 
 create table league
         (ID                     varchar(8),
         manager_id              varchar(8),
-        name                    varchar(20)not null,
+        name                    varchar(100)not null,
         roster_size             numeric(2,0)not null,
         lineup_size             numeric(1,0)not null,
         primary key (ID),
@@ -22,7 +21,7 @@ create table team
         (ID                     varchar(8),
         user_id                 varchar(8),
         league_id               varchar(8),
-        name                    varchar(16)not null,
+        name                    varchar(100)not null,
         wins                    numeric(2,0),
         losses                  numeric(2,0),
         primary key (ID),
@@ -34,8 +33,7 @@ create table team
 
 create table gymnast
         (ID                     varchar(8),
-        firstname               varchar(15) not null,
-        lastname               varchar(15) not null,
+        name               		varchar(50) not null,
         year                    numeric(4,0) check (year >= 2020 and year <= 2030),
         primary key (ID)
         );

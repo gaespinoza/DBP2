@@ -49,7 +49,7 @@ public class gymGen {
         if (i < maxUser) maxUser = i;
         in.close();
         // fill first names
-        Scanner in = openFile("firstNames");
+        in = openFile("firstNames");
         i = 0;
         while (in.hasNext() && i < maxName) {
           nameArray[i++] = in.nextLine();
@@ -57,7 +57,7 @@ public class gymGen {
         if (i < maxName) maxName = i;
         in.close();
         // fill emails
-        Scanner in = openFile("emails");
+        in = openFile("emails");
         i = 0;
         while (in.hasNext() && i < maxEmail) {
           emailArray[i++] = in.nextLine();
@@ -89,7 +89,7 @@ public class gymGen {
         if (i < maxLocation) maxLocation = i;
         in.close();
         // fill events names
-        Scanner in = openFile("eventNames");
+        in = openFile("eventNames");
         i = 0;
         while (in.hasNext() && i < maxEvents) {
           eventArray[i++] = in.nextLine();
@@ -112,29 +112,38 @@ public class gymGen {
         return "'" + System.out.format("%06d%n", rnd.nextInt(10000)) + "'";
     }
 
+    private static String getName(){
+        String name = nameArray[rnd.nextInt(maxUser)];
+        return "'" + name + "'";
+    }
+
     private static void createUsers(PrintWriter out){
         int i = 0;
         String s = "";
         while(i < 10){
-            s = "'" + System.out.format("%08d%n", i++) + "', " + getUsername() + ", " + getEmail() + ", " + genPassword() + ", " + "false";
+            s = "'" + System.out.format("%08d%n", i++) + "', " + getUsername() + ", " + getEmail() + ", " + genPassword();
             out.println("insert into users value (" + s + ");");
         }
     }
 
     private static void createGymnasts(PrintWriter out){
-
+        int i = 0;
+        String s = "";
+        while(i < 10){
+            s = "'" + System.out.format("%08d%n", i++) + "', " + getName() + ", " + (String) 2020 + rnd.nextInt(10);
+            out.println("insert into gymnasts value (" + s + ");");
+        }
     }
 
-
     private static String[] createTeam(PrintWriter out, String[] gymnasts, int curr){
-        for (i=0; i<5; i++){
+        for (int i=0; i<5; i++){
 
         }
     }
 
     private static void createLeague(PrintWriter out){
         String[] gymnasts = String[1000];
-        for (i=0; i < 6; i++){
+        for (int i=0; i < 6; i++){
             createTeam(out, gymnasts,  5*i);
         }
     }
