@@ -130,7 +130,7 @@ public class gymGen {
         int i = 0;
         String s = "";
         while(i < 10){
-            s = "'" + System.out.format("%08d%n", i++) + "', " + getName() + ", " + (String) 2020 + rnd.nextInt(10);
+            s = "'" + System.out.format("%08d%n", i++) + "', " + getName() + ", " + (String) (2020 + rnd.nextInt(10));
             out.println("insert into gymnasts value (" + s + ");");
         }
     }
