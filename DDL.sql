@@ -59,31 +59,33 @@ create table score
         foreign key (gymnast_id) references gymnast_id (ID)
                 on delete cascade
         );
-create table section
-        (course_id              varchar(8),
-         sec_id                 varchar(8),
-         semester               varchar(6)
-                check (semester in ('Fall', 'Winter', 'Spring', 'Summer')),
-         year                   numeric(4,0) check (year > 1701 and year < 2100),
-         building               varchar(15),
-         room_number            varchar(7),
-         time_slot_id           varchar(4),
-         primary key (course_id, sec_id, semester, year),
-         foreign key (course_id) references course (course_id)
+create table user_league
+        (user_id                varchar(8),
+         league_id              varchar(8),
+         primary key (user_id, league_id),
+         foreign key (user_id) references user (ID)
                 on delete cascade,
-         foreign key (building, room_number) references classroom (building, room_number)
-                on delete set null
+         foreign key (league_id) references league (ID)
+                on delete cascade
         );
 
-create table teaches
-        (ID                     varchar(5),
-         course_id              varchar(8),
-         sec_id                 varchar(8),
-         semester               varchar(6),
-         year                   numeric(4,0),
-         primary key (ID, course_id, sec_id, semester, year),
-         foreign key (course_id, sec_id, semester, year) references section (course_id, sec_id, semester, year)
+create table roster
+        (team_id                varchar(8),
+         gymnast_id             varchar(8),
+         primary key (team_id, gymnast_id),
+         foreign key (team_id) references team (ID)
                 on delete cascade,
-         foreign key (ID) references instructor (ID)
+         foreign key (gymnast_id) references gymnast (ID)
+                on delete cascade
+        );
+
+create table matchup
+        (team_id                varchar(8),
+        opponent_id             varchar(8),
+        week                    varchar(10),
+        primary key(team_id, opponent_id),
+        foreign key(team_id) references team (ID)
+                on delete cascade,
+        foreign key(opponent_id) references team (ID)
                 on delete cascade
         );
