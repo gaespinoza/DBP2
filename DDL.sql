@@ -1,9 +1,9 @@
 create table users
         (ID                     varchar(8),
-        username                varchar(15)not null,
-        email                   varchar(15)not null,
-        password                varchar(20)not null,
-        permissions             varchar(15),
+        username                varchar(50)not null,
+        email                   varchar(50)not null,
+        password                varchar(50)not null,
+        permissions             boolean,
         primary key (ID)
         );
 

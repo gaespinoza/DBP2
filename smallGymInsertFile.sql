@@ -1,0 +1,15 @@
+delete from users;
+delete from league;
+delete from team;
+delete from gymnast;
+delete from lineup_slot;
+delete from score;
+delete from user_league;
+delete from roster;
+delete from matchup;
+insert into users values ('00000001', 'Terese', 'toldcroft0@reddit.com', 'rzLKFk', false);
+insert into users values ('00000002', 'Guillaume', 'ggouldsmith1@aboutads.info', 'znxmFN', true);
+insert into users values ('00000003', 'Craig', 'ckersey2@whitehouse.gov', 'PbUUGTwv4ya', true);
+insert into users values ('00000004', 'Thorndike', 'tthoma3@illinois.edu', 'qXoX80V', false);
+insert into users values ('00000005', 'Dianna', 'dshevlane4@bbb.org', 'NXyPeW9vAW', true);
+insert into users values ('00000006', 'Inglis', 'itroak5@state.tx.us', '6nHqzop6dEh7', true);
