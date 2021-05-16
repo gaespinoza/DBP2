@@ -7,6 +7,17 @@ create table users
         primary key (ID)
         );
 
+create table league
+        (ID                     varchar(8),
+        manager_id              varchar(8),
+        name                    varchar(20)not null,
+        roster_size             numeric(2,0)not null,
+        lineup_size             numeric(1,0)not null,
+        primary key (ID),
+        foreign key (manager_id) references users (ID)
+                on delete cascade 
+        );
+
 create table team
         (ID                     varchar(8),
         user_id                 varchar(8),
@@ -19,17 +30,6 @@ create table team
                     on delete cascade,
         foreign key (league_id) references league(ID)
                     on delete cascade
-        );
-
-create table league
-        (ID                     varchar(8),
-        manager_id              varchar(8),
-        name                    varchar(20)not null,
-        roster_size             numeric(2,0)not null,
-        lineup_size             numeric(1,0)not null,
-        primary key (ID),
-        foreign key (manager_id) references users (ID)
-                on delete cascade 
         );
 
 create table gymnast
