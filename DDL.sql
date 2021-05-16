@@ -14,7 +14,7 @@ create table team
         name                    varchar(16)not null,
         wins                    numeric(2,0),
         losses                  numeric(2,0),
-        primary key (ID)
+        primary key (ID),
         foreign key (user_id) references users(ID)
                     on delete cascade,
         foreign key (league_id) references league(ID)
@@ -27,7 +27,7 @@ create table league
         name                    varchar(20)not null,
         roster_size             numeric(2,0)not null,
         lineup_size             numeric(1,0)not null,
-        primary key (ID)
+        primary key (ID),
         foreign key (manager_id) references users (ID)
                 on delete cascade 
         );
@@ -56,7 +56,7 @@ create table score
         event                   varchar(20) not null,
         score                   numeric(2,2),
         primary key (gymnast_id, date_score, event),
-        foreign key (gymnast_id) references gymnast_id (ID)
+        foreign key (gymnast_id) references gymnast (ID)
                 on delete cascade
         );
 create table user_league
