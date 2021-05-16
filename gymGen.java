@@ -39,64 +39,103 @@ public class gymGen {
         return out;
     }
     private static void fillArrays() {
-    int i;
-    // fill usernames
-    Scanner in = openFile("userNames");
-    i = 0;
-    while (in.hasNext() && i < maxUser) {
-      userNameArray[i++] = in.nextLine();
+        int i;
+        // fill usernames
+        Scanner in = openFile("userNames");
+        i = 0;
+        while (in.hasNext() && i < maxUser) {
+          userNameArray[i++] = in.nextLine();
+        }
+        if (i < maxUser) maxUser = i;
+        in.close();
+        // fill first names
+        Scanner in = openFile("firstNames");
+        i = 0;
+        while (in.hasNext() && i < maxName) {
+          nameArray[i++] = in.nextLine();
+        }
+        if (i < maxName) maxName = i;
+        in.close();
+        // fill emails
+        Scanner in = openFile("emails");
+        i = 0;
+        while (in.hasNext() && i < maxEmail) {
+          emailArray[i++] = in.nextLine();
+        }
+        if (i < maxEmail) maxEmail = i;
+        in.close();
+        // fill league names
+        in = openFile("leagueName");
+        i = 0;
+        while (in.hasNext() && i < maxLeague) {
+          leagueArray[i++] = in.nextLine();
+        }
+        if (i < maxLeague) maxLeague = i;
+        in.close();
+        // fill team names
+        in = openFile("teamNames");
+        i = 0;
+        while (in.hasNext() && i < maxTeam) {
+          teamArray[i++] = in.nextLine();
+        }
+        if (i < maxTeam) maxTeam = i;
+        in.close();
+        // fill location names
+        in = openFile("locationName");
+        i = 0;
+        while (in.hasNext() && i < maxLocation) {
+          locationArray[i++] = in.nextLine();
+        }
+        if (i < maxLocation) maxLocation = i;
+        in.close();
+        // fill events names
+        Scanner in = openFile("eventNames");
+        i = 0;
+        while (in.hasNext() && i < maxEvents) {
+          eventArray[i++] = in.nextLine();
+        }
+        if (i < maxEvents) maxEvents = i;
+        in.close();
     }
-    if (i < maxUser) maxUser = i;
-    in.close();
-    // fill first names
-    Scanner in = openFile("firstNames");
-    i = 0;
-    while (in.hasNext() && i < maxName) {
-      nameArray[i++] = in.nextLine();
+
+    private static String getUsername(){
+        String name = usernames[rnd.nextInt(maxUser)];
+        return "'" + name + "'";
     }
-    if (i < maxName) maxName = i;
-    in.close();
-    // fill emails
-    Scanner in = openFile("emails");
-    i = 0;
-    while (in.hasNext() && i < maxEmail) {
-      emailArray[i++] = in.nextLine();
+
+    private static String getEmail(){
+        String email = emailArray[rnd.nextInt(maxEmail)];
+        return "'" + email + "'";
     }
-    if (i < maxEmail) maxEmail = i;
-    in.close();
-    // fill league names
-    in = openFile("leagueName");
-    i = 0;
-    while (in.hasNext() && i < maxLeague) {
-      leagueArray[i++] = in.nextLine();
+
+    private static String genPassword(){
+        return "'" + System.out.format("%06d%n", rnd.nextInt(10000)) + "'";
     }
-    if (i < maxLeague) maxLeague = i;
-    in.close();
-    // fill team names
-    in = openFile("teamNames");
-    i = 0;
-    while (in.hasNext() && i < maxTeam) {
-      teamArray[i++] = in.nextLine();
+
+    private static void createUsers(PrintWriter out){
+        int i = 0;
+        String s = "";
+        while(i < 10){
+            s = "'" + System.out.format("%08d%n", i++) + "', " + getUsername() + ", " + getEmail() + ", " + genPassword() + ", " + "false"
+            out.println("insert into users value (" + s + ");")
+        }
     }
-    if (i < maxTeam) maxTeam = i;
-    in.close();
-    // fill location names
-    in = openFile("locationName");
-    i = 0;
-    while (in.hasNext() && i < maxLocation) {
-      locationArray[i++] = in.nextLine();
+
+
+    private static String[] createTeam(PrintWriter out, String[] gymnasts, int curr){
+        for (i=0; i<5; i++){
+
+        }
     }
-    if (i < maxLocation) maxLocation = i;
-    in.close();
-    // fill events names
-    Scanner in = openFile("eventNames");
-    i = 0;
-    while (in.hasNext() && i < maxEvents) {
-      eventArray[i++] = in.nextLine();
+
+    private static void createLeague(PrintWriter out){
+        String[] gymnasts = String[1000];
+        for (i=0; i < 6; i++){
+            createTeam(out, gymnasts,  5*i);
+        }
     }
-    if (i < maxEvents) maxEvents = i;
-    in.close();
-  }
+
+
 
     public static void main(String[] args) {
         int num_leagues = 1;
@@ -114,9 +153,12 @@ public class gymGen {
         out.println("delete from roster;")
         out.println("delete from matchup;")
 
-        for (i=0; i < 10; i++) {
-            
-        } 
+
+        createUsers(out);
+
+        // for (i=0; i < 10; i++) {
+        //     createLeague(out);
+        // } 
     }
 
 }
