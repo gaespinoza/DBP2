@@ -116,9 +116,13 @@ public class gymGen {
         int i = 0;
         String s = "";
         while(i < 10){
-            s = "'" + System.out.format("%08d%n", i++) + "', " + getUsername() + ", " + getEmail() + ", " + genPassword() + ", " + "false"
-            out.println("insert into users value (" + s + ");")
+            s = "'" + System.out.format("%08d%n", i++) + "', " + getUsername() + ", " + getEmail() + ", " + genPassword() + ", " + "false";
+            out.println("insert into users value (" + s + ");");
         }
+    }
+
+    private static void createGymnasts(PrintWriter out){
+
     }
 
 
@@ -145,16 +149,18 @@ public class gymGen {
         PrintWriter out = outputFile("largeRelationsInsertFile.sql");
         out.println("delete from users;");
         out.println("delete from league;");
-        out.println("delete from team;")
-        out.println("delete from gymnast;")
-        out.println("delete from lineup_slot;")
-        out.println("delete from score;")
-        out.println("delete from user_league;")
-        out.println("delete from roster;")
-        out.println("delete from matchup;")
+        out.println("delete from team;");
+        out.println("delete from gymnast;");
+        out.println("delete from lineup_slot;");
+        out.println("delete from score;");
+        out.println("delete from user_league;");
+        out.println("delete from roster;");
+        out.println("delete from matchup;");
 
 
         createUsers(out);
+
+        createGymnasts(out);
 
         // for (i=0; i < 10; i++) {
         //     createLeague(out);
