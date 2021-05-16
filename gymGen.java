@@ -42,7 +42,7 @@ public class gymGen {
     private static void fillArrays() {
         int i;
         // fill usernames
-        Scanner in = openFile("userNames");
+        Scanner in = openFile("userNames.txt");
         i = 0;
         while (in.hasNext() && i < maxUser) {
           userNameArray[i++] = in.nextLine();
@@ -50,7 +50,7 @@ public class gymGen {
         if (i < maxUser) maxUser = i;
         in.close();
         // fill first names
-        in = openFile("firstNames");
+        in = openFile("firstNames.txt");
         i = 0;
         while (in.hasNext() && i < maxName) {
           nameArray[i++] = in.nextLine();
@@ -58,7 +58,7 @@ public class gymGen {
         if (i < maxName) maxName = i;
         in.close();
         // fill emails
-        in = openFile("emails");
+        in = openFile("emails.txt");
         i = 0;
         while (in.hasNext() && i < maxEmail) {
           emailArray[i++] = in.nextLine();
@@ -66,7 +66,7 @@ public class gymGen {
         if (i < maxEmail) maxEmail = i;
         in.close();
         // fill league names
-        in = openFile("leagueName");
+        in = openFile("leagueName.txt");
         i = 0;
         while (in.hasNext() && i < maxLeague) {
           leagueArray[i++] = in.nextLine();
@@ -74,7 +74,7 @@ public class gymGen {
         if (i < maxLeague) maxLeague = i;
         in.close();
         // fill team names
-        in = openFile("teamNames");
+        in = openFile("teamNames.txt");
         i = 0;
         while (in.hasNext() && i < maxTeam) {
           teamArray[i++] = in.nextLine();
@@ -82,7 +82,7 @@ public class gymGen {
         if (i < maxTeam) maxTeam = i;
         in.close();
         // fill location names
-        in = openFile("locationName");
+        in = openFile("locationName.txt");
         i = 0;
         while (in.hasNext() && i < maxLocation) {
           locationArray[i++] = in.nextLine();
@@ -90,7 +90,7 @@ public class gymGen {
         if (i < maxLocation) maxLocation = i;
         in.close();
         // fill events names
-        in = openFile("eventNames");
+        in = openFile("eventNames.txt");
         i = 0;
         while (in.hasNext() && i < maxEvents) {
           eventArray[i++] = in.nextLine();
