@@ -34,7 +34,7 @@ public class gymGen {
         out = new PrintWriter (new FileOutputStream (fileName));
         }
         catch (FileNotFoundException e) {
-        System.out.println ("Could not open the file");
+        System.out.println ("Could not open the file: " + fileName);
         System.exit (0);
         }
         return out;
