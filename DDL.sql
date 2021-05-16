@@ -1,4 +1,4 @@
-create table user
+create table users
         (ID                     varchar(8),
         username                varchar(15)not null,
         email                   varchar(15)not null,
@@ -15,7 +15,7 @@ create table team
         wins                    numeric(2,0),
         losses                  numeric(2,0),
         primary key (ID)
-        foreign key (user_id) references user(ID)
+        foreign key (user_id) references users(ID)
                     on delete cascade,
         foreign key (league_id) references league(ID)
                     on delete cascade
@@ -28,7 +28,7 @@ create table league
         roster_size             numeric(2,0)not null,
         lineup_size             numeric(1,0)not null,
         primary key (ID)
-        foreign key (manager_id) references user (ID)
+        foreign key (manager_id) references users (ID)
                 on delete cascade 
         );
 
@@ -63,7 +63,7 @@ create table user_league
         (user_id                varchar(8),
          league_id              varchar(8),
          primary key (user_id, league_id),
-         foreign key (user_id) references user (ID)
+         foreign key (user_id) references users (ID)
                 on delete cascade,
          foreign key (league_id) references league (ID)
                 on delete cascade
