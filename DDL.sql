@@ -36,14 +36,14 @@ create table gymnast
         (ID                     varchar(8),
         firstname               varchar(15) not null,
         lastname               varchar(15) not null,
-        year                    numeric(4,0) check (year > 2020 and year < 2030),
+        year                    numeric(4,0) check (year >= 2020 and year <= 2030),
         primary key (ID)
         );
 
 create table lineup_slot
         (team_id                varchar(8),
          event                  varchar(20) not null,
-         slot                   numeric(2,2),
+         slot                   numeric(2,0),
          gymnast_id             varchar(8),
          primary key (team_id, event, slot),
          foreign key (team_id) references team (ID)
@@ -56,7 +56,7 @@ create table score
         (gymnast_id             varchar(8),
         date_score              date,
         event                   varchar(20) not null,
-        score                   numeric(2,2),
+        score                   numeric(2,0),
         primary key (gymnast_id, date_score, event),
         foreign key (gymnast_id) references gymnast (ID)
                 on delete cascade
