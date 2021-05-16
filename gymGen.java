@@ -4,7 +4,7 @@ import java.util.Random;
 import java.text.DecimalFormat;
 public class gymGen {
     private static int maxUser = 1000, maxGymnast = 1000, maxTeam = 1000, maxLeague = 1000, 
-        maxEmail = 1000, maxEvents = 6, maxName = 1000, maxTeam = 1000, maxLocation = 1000;
+        maxEmail = 1000, maxEvents = 6, maxName = 1000, maxLocation = 1000;
     private static int maxYear = 2030, minYear = 2020;
     private static int maxID = 99999999;
     private static Random rnd = new Random();
@@ -99,7 +99,7 @@ public class gymGen {
     }
 
     private static String getUsername(){
-        String name = usernames[rnd.nextInt(maxUser)];
+        String name = userNameArray[rnd.nextInt(maxUser)];
         return "'" + name + "'";
     }
 
@@ -141,12 +141,12 @@ public class gymGen {
         }
     }
 
-    private static void createLeague(PrintWriter out){
-        String[] gymnasts = String[1000];
-        for (int i=0; i < 6; i++){
-            createTeam(out, gymnasts,  5*i);
-        }
-    }
+    // private static void createLeague(PrintWriter out){
+    //     String[] gymnasts = String[1000];
+    //     for (int i=0; i < 6; i++){
+    //         createTeam(out, gymnasts,  5*i);
+    //     }
+    // }
 
 
 
