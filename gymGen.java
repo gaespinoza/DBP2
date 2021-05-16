@@ -2,6 +2,7 @@ import java.util.Scanner;
 import java.io.*;
 import java.util.Random;
 import java.text.DecimalFormat;
+
 public class gymGen {
     private static int maxUser = 1000, maxGymnast = 1000, maxTeam = 1000, maxLeague = 1000, 
         maxEmail = 1000, maxEvents = 6, maxName = 1000, maxLocation = 1000;
@@ -151,6 +152,7 @@ public class gymGen {
 
 
     public static void main(String[] args) {
+        System.out.println("gabe is so cute ");
         int num_leagues = 1;
         int team_num = 1;
         int gym_num = 1;
