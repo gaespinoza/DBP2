@@ -46,6 +46,8 @@ create table lineup_slot
          slot                   numeric(2,2),
          gymnast_id             varchar(8),
          primary key (team_id, event, slot),
+         foreign key (team_id) references team (ID)
+                on delete cascade,
          foreign key (gymnast_id) references gymnast (ID)
                 on delete cascade
         );
