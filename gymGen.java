@@ -123,7 +123,7 @@ public class gymGen {
         String s = "";
         String num = "";
         while(i <= 10){
-            num = String.format("%08d%n", ++i)
+            num = String.format("%08d%n", ++i);
             s = "'" + num + "', " + getUsername() + ", " + getEmail() + ", " + genPassword();
             out.println("insert into users value (" + s + ");");
         }
@@ -134,7 +134,7 @@ public class gymGen {
         String s = "";
         String num = "";
         while(i <= 10){
-            num = String.format("%08d%n", ++i)
+            num = String.format("%08d%n", ++i);
             s = "'" + num + "', " + getName() + ", " + String.valueOf(2020 + rnd.nextInt(10));
             out.println("insert into gymnasts value (" + s + ");");
         }
