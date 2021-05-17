@@ -30,8 +30,9 @@ class Queries:
 	#return a string that contains the advisor query
 	def league_team(self):
 		output = ''
+        league = input("What is the league ID? \ninput: ")
 		query = "select L.id as L_id, L.name as LeagueName, T.id as T_id, T.name as TeamName from league as L join team as T on L.id=T.league_id and L.id=%s;"
-		self.__cur.execute(query)
+		self.__cur.execute(query, (league,))
 		output += "Teams in League!\n"
 		colnames = [desc[0] for desc in self.__cur.description]
 		output += "colnames\n"
@@ -185,7 +186,7 @@ while q.input != 0:
 	if q.input == "0":
 		break
 	elif q.input == "1":
-	    print(q.advisor_list())
+	    print(q.league_team())
 	elif q.input == "2":
 	    print(q.hire())
 	elif q.input == "3":
