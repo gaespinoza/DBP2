@@ -146,7 +146,7 @@ public class gymGen {
 
 
     private static String getGymnast(){
-        return gymnasts[rnd.nextInt(maxGymnast)];
+        return gymnasts[rnd.nextInt(10)];
     }
 
     private static String getUser(){
