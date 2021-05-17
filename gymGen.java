@@ -228,7 +228,7 @@ public class gymGen {
 
         g_i += 5; //update this with how many gymnasts per team
 
-        for (int i=1; i < 6; i++){
+        for (int i=1; i < 20; i++){
             String cu = users[curr+i%1000];
             inputted[index++] = cu;
             gymnasts = createTeam(out, gymnasts,  g_i, cu, league_id, index);
@@ -260,7 +260,7 @@ public class gymGen {
 
         createGymnasts(out);
 
-        for (int i=0; i < 1; i++) {
+        for (int i=0; i < 100; i++) {
             createLeague(out, i+1);
         } 
         out.close();
