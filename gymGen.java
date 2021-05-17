@@ -240,10 +240,10 @@ public class gymGen {
             g_i += 5;
         }
 
-        for (int j=0; j < index-1; j++){
-            for (int k=j+1; k < index;k++){
-                out.println("insert into matchup values ('" + inputted[j] + "', '" + inputted[k] + "', " + String.format("%08d", k) + ");");
-            }
+        for (int j=0; j < 5; j++){
+            
+            out.println("insert into matchup values ('" + inputted[j] + "', '" + inputted[9-j] + "', " + String.format("%08d", k) + ");");
+            
         }
 
     }
