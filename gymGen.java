@@ -256,11 +256,3 @@ public class gymGen {
     }
 
 }
-
-insert into lineup_slot values ('00000001', 'Vault', 1, '00000001');
-insert into lineup_slot values ('00000001', 'Beam', 2, '00000009');
-insert into lineup_slot values ('00000001', 'Uneven Bars', 3, '00000017');
-insert into lineup_slot values ('00000001', 'Rings', 4, '00000025');
-
-
-insert into score values ('00000001', '2018-07-31', 'Rings', 40);
