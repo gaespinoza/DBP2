@@ -123,10 +123,8 @@ public class gymGen {
         String s = "";
         String num = "";
         while(i <= 10){
-            num = String.format("%08d%n", ++i);
-            num.replace("\n", "");
-            num.replace("\t", "");
-            num.replace(" ", "");
+            num = String.format("%08d", ++i);
+
             s = "'" + num + "', " + getUsername() + ", " + getEmail() + ", " + genPassword();
             out.println("insert into users values (" + s + ");");
         }
@@ -137,10 +135,7 @@ public class gymGen {
         String s = "";
         String num = "";
         while(i <= 10){
-            num = String.format("%08d%n", ++i);
-            num.replace("\n", "");
-            num.replace("\t", "");
-            num.replace(" ", "");
+            num = String.format("%08d", ++i);
             s = "'" + num + "', " + getName() + ", " + String.valueOf(2020 + rnd.nextInt(10));
             out.println("insert into gymnast values (" + s + ");");
         }
