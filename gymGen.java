@@ -18,7 +18,7 @@ public class gymGen {
     private static String[] eventArray = new String[maxEvents];
     private static String[] users = new String[maxUser];
     private static String[] gymnasts = new String[maxGymnast];
-    private static int date = 0;
+    private static int score = 0;
 
     private static Scanner openFile(String fileName) {
         Scanner in = null;
@@ -206,7 +206,7 @@ public class gymGen {
 
             out.println("insert into score values ('" + curr + "', '" + String.valueOf(year) + "-" + 
                 String.valueOf(1 + rnd.nextInt(11)) + "-" + String.valueOf(1+rnd.nextInt(27)) + "', '" + eventArray[i]
-                + "', " + String.valueOf(50 + rnd.nextInt(40)) + ");");
+                + "', " + String.valueOf(score++) + ");");
 
             out.println("insert into roster values ('" + id + "', '" + curr + "');");
         }
