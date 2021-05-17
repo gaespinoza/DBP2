@@ -5,7 +5,7 @@ import java.text.DecimalFormat;
 
 public class gymGen {
     private static int maxUser = 1000, maxGymnast = 1000, maxTeam = 1000, maxLeague = 1000, 
-        maxEmail = 1000, maxEvents = 6, maxName = 1000, maxLocation = 1000;
+        maxEmail = 1000, maxEvents = 6, maxName = 1000, maxLocation = 1000, numLeague = 10000;
     private static int maxYear = 2030, minYear = 2020;
     private static int maxID = 99999999;
     private static Random rnd = new Random();
@@ -221,9 +221,9 @@ public class gymGen {
         int index = 0;
         int g_i = 0;
         String[] inputted = new String[10];
-        String[] gymnasts = new String[1000];
+        String[] gymnasts = new String[maxGymnast];
 
-        String manager = users[curr%1000];
+        String manager = users[curr%maxUser];
         index++;
         inputted[index-1] = String.format("%08d", index+((curr-1)*10));;
         String league_id = String.format("%08d", curr); 
@@ -236,19 +236,15 @@ public class gymGen {
         g_i += 5; //update this with how many gymnasts per team
 
         for (int i=1; i < 10; i++){
-            String cu = users[(curr+i)%1000];
+            String cu = users[(curr+i)%maxUser];
             index++;
             inputted[index-1] = String.format("%08d", index+((curr-1)*10));
             gymnasts = createTeam(out, gymnasts,  g_i, cu, league_id, index+((curr-1)*10));
 
             g_i += 5;
         }
-
         return inputted;
-
     }
-
-
 
     public static void main(String[] args) {
         System.out.println("gabe is so cute ");
@@ -267,12 +263,11 @@ public class gymGen {
         out.println("delete from roster;");
         out.println("delete from matchup;");
 
-
         createUsers(out);
 
         createGymnasts(out);
 
-        for (int i=0; i < 10000; i++) {
+        for (int i=0; i < numLeague; i++) {
 
             String[] teams = createLeague(out, i+1);
             for (int j=0; j < 5; j++){
