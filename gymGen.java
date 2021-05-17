@@ -210,7 +210,7 @@ public class gymGen {
                 + ", '" + curr + "');");
 
             out.println("insert into score values ('" + curr + "', '" + String.valueOf(year) + "-" + 
-                String.valueOf("%02d", month) + "-" + String.valueOf("%02d", day) + "', '" + eventArray[i]
+                String.format("%02d", month) + "-" + String.format("%02d", day) + "', '" + eventArray[i]
                 + "', " + String.valueOf(50 + rnd.nextInt(40)) + ");");
 
             out.println("insert into roster values ('" + id + "', '" + curr + "');");
