@@ -19,6 +19,7 @@ public class gymGen {
     private static String[] users = new String[maxUser];
     private static String[] gymnasts = new String[maxGymnast];
     private static int score_id = 1;
+    private static int week = 0;
 
     private static Scanner openFile(String fileName) {
         Scanner in = null;
@@ -238,6 +239,13 @@ public class gymGen {
             gymnasts = createTeam(out, gymnasts,  g_i, cu, league_id, index+((curr-1)*10));
             g_i += 5;
         }
+
+        for (int j=0; j < index-1; j++){
+            for (int k=j+1; k < index;k++){
+                out.println("insert into matchup ('" + inputted[j] + "', '" + inputted[k] + "', " + String.format("%08d", week++) + ");");
+            }
+        }
+
     }
 
 

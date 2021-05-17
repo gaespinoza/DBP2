@@ -84,7 +84,7 @@ create table matchup
         (team_id                varchar(8),
         opponent_id             varchar(8),
         week                    varchar(10),
-        primary key(team_id, opponent_id),
+        primary key(team_id, opponent_id, week),
         foreign key(team_id) references team (ID)
                 on delete cascade,
         foreign key(opponent_id) references team (ID)
