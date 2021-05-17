@@ -40,7 +40,7 @@ class Queries:
     def user_team(self):
         output = ''
         user = input("Which User Would you like? \ninput: ")
-        query = "select U.id as U_id, U.username as username, T.id at T_id, T.name as T_name from users as U join team as T on U.id=T.user_id and U.id=%s;"
+        query = "select U.id as U_id, U.username as username, T.id as T_id, T.name as T_name from users as U join team as T on U.id=T.user_id and U.id=%s;"
         self.__cur.execute(query, (user,))
         output += f"Teams Belonging to User: {user}\n"
         colnames = [desc[0] for desc in self.__cur.description]
