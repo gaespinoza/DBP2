@@ -18,6 +18,7 @@ public class gymGen {
     private static String[] eventArray = new String[maxEvents];
     private static String[] users = new String[maxUser];
     private static String[] gymnasts = new String[maxGymnast];
+    private static int date = 0;
 
     private static Scanner openFile(String fileName) {
         Scanner in = null;
@@ -195,7 +196,13 @@ public class gymGen {
                 curr = getGymnast();
             }
 
-            int year = 2020 + rnd.nextInt(10);
+
+
+
+            int year = 2020 + Math.floor(date/365);
+            int month = 1 + date%12;
+            int day = 1 + date%28;
+
 
             gymnasts[gl++] = curr;
 
@@ -263,7 +270,9 @@ public class gymGen {
         createGymnasts(out);
 
         for (int i=0; i < 100; i++) {
+
             createLeague(out, i+1);
+            date += 1;
         } 
         out.close();
     }
