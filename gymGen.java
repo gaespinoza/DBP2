@@ -267,7 +267,6 @@ public class gymGen {
         for (int i=0; i < 100; i++) {
 
             createLeague(out, i+1);
-            date += 1;
         } 
         out.close();
     }
