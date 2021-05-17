@@ -240,6 +240,8 @@ public class gymGen {
             g_i += 5;
         }
 
+        return inputted;
+
     }
 
 
