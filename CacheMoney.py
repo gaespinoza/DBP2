@@ -31,7 +31,7 @@ class Queries:
 	def league_team(self):
 		output = ''
         league = input("What is the league ID? \ninput: ")
-		query = "select L.id as L_id, L.name as LeagueName, T.id as T_id, T.name as TeamName from league as L join team as T on L.id=T.league_id and L.id=%s;"
+        query = "select L.id as L_id, L.name as LeagueName, T.id as T_id, T.name as TeamName from league as L join team as T on L.id=T.league_id and L.id=%s;"
 		self.__cur.execute(query, (league,))
 		output += "Teams in League!\n"
 		colnames = [desc[0] for desc in self.__cur.description]
