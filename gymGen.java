@@ -272,7 +272,7 @@ public class gymGen {
 
         createGymnasts(out);
 
-        for (int i=0; i < 1; i++) {
+        for (int i=0; i < 10000; i++) {
 
             String[] teams = createLeague(out, i+1);
             for (int j=0; j < 5; j++){
