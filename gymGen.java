@@ -216,7 +216,7 @@ public class gymGen {
 
         int index = 0;
         int g_i = 0;
-        String[] inputted = new String[20];
+        String[] inputted = new String[10];
         String[] gymnasts = new String[1000];
 
         String manager = users[curr%1000];
@@ -226,14 +226,14 @@ public class gymGen {
         out.println("insert into league values ('" + league_id + "', '" + manager + "', '" +  
             getLeague() + "', " + "6, 6);");
 
-        gymnasts = createTeam(out, gymnasts, g_i, manager, league_id, index+((curr-1)*20));
+        gymnasts = createTeam(out, gymnasts, g_i, manager, league_id, index+((curr-1)*10));
 
         g_i += 5; //update this with how many gymnasts per team
 
-        for (int i=1; i < 20; i++){
+        for (int i=1; i < 10; i++){
             String cu = users[curr+i%1000];
             inputted[index++] = cu;
-            gymnasts = createTeam(out, gymnasts,  g_i, cu, league_id, index+((curr-1)*20));
+            gymnasts = createTeam(out, gymnasts,  g_i, cu, league_id, index+((curr-1)*10));
             g_i += 5;
         }
     }
