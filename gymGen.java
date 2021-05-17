@@ -135,7 +135,7 @@ public class gymGen {
         String s = "";
         String num = "";
         String name = "";
-        while(i <= maxUser){
+        while(i < maxUser){
             num = String.format("%08d", ++i);
             name = getUsername();
             s = "'" + num + "', " + name + ", " + getEmail() + ", " + genPassword();
@@ -157,7 +157,7 @@ public class gymGen {
         int i = 0;
         String s = "";
         String num = "";
-        while(i <= maxGymnast){
+        while(i < maxGymnast){
             num = String.format("%08d", ++i);
             s = "'" + num + "', " + getName() + ", " + String.valueOf(2020 + rnd.nextInt(10));
             out.println("insert into gymnast values (" + s + ");");
