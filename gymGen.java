@@ -215,7 +215,7 @@ public class gymGen {
         return gymnasts;
     }
     
-    private static void createLeague(PrintWriter out, int curr){
+    private static String[] createLeague(PrintWriter out, int curr){
 
         int index = 0;
         int g_i = 0;
@@ -238,12 +238,6 @@ public class gymGen {
             inputted[index++] = cu;
             gymnasts = createTeam(out, gymnasts,  g_i, cu, league_id, index+((curr-1)*10));
             g_i += 5;
-        }
-
-        for (int j=0; j < 5; j++){
-            
-            out.println("insert into matchup values ('" + inputted[j] + "', '" + inputted[9-j] + "', " + String.format("%08d", j) + ");");
-            
         }
 
     }
@@ -274,7 +268,12 @@ public class gymGen {
 
         for (int i=0; i < 10000; i++) {
 
-            createLeague(out, i+1);
+            String[] teams = createLeague(out, i+1);
+            for (int j=0; j < 5; j++){
+            
+                out.println("insert into matchup values ('" + teams[j] + "', '" + teams[9-j] + "', " + String.format("%08d", j) + ");");
+                
+            }
         } 
         out.close();
     }
