@@ -242,7 +242,7 @@ public class gymGen {
 
         for (int j=0; j < 5; j++){
             
-            out.println("insert into matchup values ('" + inputted[j] + "', '" + inputted[9-j] + "', " + String.format("%08d", k) + ");");
+            out.println("insert into matchup values ('" + inputted[j] + "', '" + inputted[9-j] + "', " + String.format("%08d", j) + ");");
             
         }
 
