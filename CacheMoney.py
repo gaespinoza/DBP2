@@ -48,7 +48,8 @@ class Queries:
         self.__cur.execute(query, (league,))
         output += "Teams in League!\n"
         colnames = [desc[0] for desc in self.__cur.description]
-        output += "colnames\n"
+        for i in colnames:
+            output += "|{}|".format(i.ljust(6))
         for team in self.__cur:
             output += '{}|{}|{}|{}\n'.format(team[0].ljust(6), team[1].ljust(10), team[2].ljust(10), team[3].ljust(10))
         return output
@@ -61,7 +62,7 @@ class Queries:
         output += f"Teams Belonging to User: {user}\n"
         colnames = [desc[0] for desc in self.__cur.description]
         for i in colnames:
-            output += f"| {i} |"
+            output += "|{}|".format(i.ljust(6))
         output +="\n"
         for team in self.__cur:
             output += '{}|{}|{}|{}\n'.format(team[0].ljust(6), team[1].ljust(10), team[2].ljust(10), team[3].ljust(10))
@@ -79,6 +80,8 @@ while q.input != 0:
             pass
         elif q.input == "2":
             pass
+        elif q.input == "0":
+            q.input = -1
         elif q.input > 2 or q.input < 0:
             print("Bad Input!")
     elif q.input == "2":
@@ -89,7 +92,10 @@ while q.input != 0:
             print(q.user_team())
         elif q.input == "3":
             pass
+        elif q.input == "0":
+            q.input = -1
         elif q.input > 3 or q.input < 0:
             print("Bad Input!")
+
     else:
         print("Bad Input!")
