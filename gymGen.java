@@ -165,9 +165,9 @@ public class gymGen {
         }
     }
 
-    private static String[] createTeam(PrintWriter out, String[] gymnasts, int gl, String uid, String league_id, int id){
+    private static String[] createTeam(PrintWriter out, String[] gymnasts, int gl, String uid, String league_id, int ids){
 
-        id = String.format("%08d", id);
+        String id = String.format("%08d", ids);
 
         String s = id + "', '" + uid + "', '" + league_id + "', '" + getTeam() + "', "+ String.valueOf(rnd.nextInt(10)) + ", " + String.valueOf(rnd.nextInt(10));
 
