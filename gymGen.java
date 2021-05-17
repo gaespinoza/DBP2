@@ -224,14 +224,14 @@ public class gymGen {
         out.println("insert into league values ('" + league_id + "', '" + manager + "', '" +  
             getLeague() + "', " + "6, 6);");
 
-        gymnasts = createTeam(out, gymnasts, g_i, manager, league_id, index);
+        gymnasts = createTeam(out, gymnasts, g_i, manager, league_id, index+(curr*20));
 
         g_i += 5; //update this with how many gymnasts per team
 
         for (int i=1; i < 20; i++){
             String cu = users[curr+i%1000];
             inputted[index++] = cu;
-            gymnasts = createTeam(out, gymnasts,  g_i, cu, league_id, index);
+            gymnasts = createTeam(out, gymnasts,  g_i, cu, league_id, index+(curr*20));
             g_i += 5;
         }
     }
