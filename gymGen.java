@@ -16,6 +16,8 @@ public class gymGen {
     private static String[] teamArray = new String[maxTeam];
     private static String[] locationArray = new String[maxLocation];
     private static String[] eventArray = new String[maxEvents];
+    private static String[] users = new String[maxUser];
+    private static String[] gymnasts = new String[maxGymnast];
 
     private static Scanner openFile(String fileName) {
         Scanner in = null;
@@ -118,16 +120,37 @@ public class gymGen {
         return "'" + name + "'";
     }
 
+    private static String getLeague(){
+        String league = leagueArray[rnd.nextInt(maxLeague)];
+        return league;
+    }
+
+    private static String getTeam(){
+        String team = teamArray[rnd.nextInt(maxTeam)];
+        return team;
+    }
+
     private static void createUsers(PrintWriter out){
         int i = 0;
         String s = "";
         String num = "";
+        String name = "";
         while(i <= 10){
             num = String.format("%08d", ++i);
-
-            s = "'" + num + "', " + getUsername() + ", " + getEmail() + ", " + genPassword();
+            name = getUsername();
+            s = "'" + num + "', " + name + ", " + getEmail() + ", " + genPassword();
             out.println("insert into users values (" + s + ");");
+            users[i-1] = num;
         }
+    }
+
+
+    private static String getGymnast(){
+        return gymnasts[rnd.nextInt(maxGymnast)];
+    }
+
+    private static String getUser(){
+        return users[rnd.nextInt(maxUser)];
     }
 
     private static void createGymnasts(PrintWriter out){
@@ -138,21 +161,69 @@ public class gymGen {
             num = String.format("%08d", ++i);
             s = "'" + num + "', " + getName() + ", " + String.valueOf(2020 + rnd.nextInt(10));
             out.println("insert into gymnast values (" + s + ");");
+            gymnasts[i-1] = num;
         }
     }
 
-    // private static String[] createTeam(PrintWriter out, String[] gymnasts, int curr){
-    //     for (int i=0; i<5; i++){
+    private static String[] createTeam(PrintWriter out, String[] gymnasts, int gl, String uid, String league_id, int id){
 
-    //     }
-    // }
+        id = String.format("%08d", id);
 
-    // private static void createLeague(PrintWriter out){
-    //     String[] gymnasts = String[1000];
-    //     for (int i=0; i < 6; i++){
-    //         createTeam(out, gymnasts,  5*i);
-    //     }
-    // }
+        String s = id + "', '" + uid + "', '" + league_id + "', '" + getTeam() + "', "+ String.valueOf(rnd.nextInt(10)) + ", " + String.valueOf(rnd.nextInt(10));
+
+        out.println("insert in team values ('" + s + ");");
+
+        out.println("insert in user_league values ('" + uid + "', '" + league_id + "');");
+
+        for (int i=0; i<5; i++){
+
+            String curr = getGymnast();
+
+            while (gymnasts.contains(curr)){
+                curr = getGymnast();
+            }
+
+            int year = 2020 + rnd.nextInt(10);
+
+            gymnasts[gl++] = curr;
+
+            out.println("insert in lineup_slot values ('" + id + "', '" + eventArray[i] + "', " + String.valueOf(i+1)
+                + ", '" + curr + "');")
+
+            out.println("insert in score values ('" + curr + "', '" + String.valueOf(year) + "-" + 
+                String.valueOf(1 + rnd.nextInt(11)) + "-" + String.valueOf(1+rnd.nextInt(27)) + "', '" + eventArray[i]
+                + "', " + String.valueOf(50 + rnd.nextInt(40)) + ");");
+
+            out.println("insert in roster values ('" + id + "', '" + curr + "');");
+        }
+
+        return gymnasts;
+    }
+    
+    private static void createLeague(PrintWriter out, int curr){
+
+        int index = 0;
+        int g_i = 0;
+        String[] inputted = new String[6];
+        String[] gymnasts = String[1000];
+
+        String manager = users[curr%1000];
+        inputted[index++] = manager;
+        String league_id = String.format("%08d", curr); 
+
+        out.println("insert league values ('" + league_id + "', '" + manager + "', '" +  
+            getLeague() + "', " + "6, 6);");
+
+        gymnasts = createTeam(out, gymnasts, g_i, manager, league_id, index);
+
+        g_i += 5; //update this with how many gymnasts per team
+
+        for (int i=1; i < 6; i++){
+            String cu = users[curr+i%1000];
+            inputted[index++] = cu;
+            gymnasts = createTeam(out, gymnasts,  g_i, cu, league_id, index);
+        }
+    }
 
 
 
@@ -178,10 +249,18 @@ public class gymGen {
 
         createGymnasts(out);
 
-        // for (i=0; i < 10; i++) {
-        //     createLeague(out);
-        // } 
+        for (i=0; i < 1; i++) {
+            createLeague(out, i+1);
+        } 
         out.close();
     }
 
 }
+
+insert into lineup_slot values ('00000001', 'Vault', 1, '00000001');
+insert into lineup_slot values ('00000001', 'Beam', 2, '00000009');
+insert into lineup_slot values ('00000001', 'Uneven Bars', 3, '00000017');
+insert into lineup_slot values ('00000001', 'Rings', 4, '00000025');
+
+
+insert into score values ('00000001', '2018-07-31', 'Rings', 40);
