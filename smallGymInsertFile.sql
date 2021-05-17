@@ -197,7 +197,7 @@ insert into user_league values ('00000003', '00000004');
 insert into user_league values ('00000004', '00000004');
 insert into user_league values ('00000005', '00000004');
 insert into user_league values ('00000006', '00000004');
-insert into roster values ('00000001', '00000001', 1);
+insert into roster values ('00000001', '00000001');
 insert into roster values ('00000002', '00000002');
 insert into roster values ('00000003', '00000003');
 insert into roster values ('00000004', '00000004');
