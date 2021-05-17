@@ -16,11 +16,27 @@ class Queries:
     def menu_selection(self):
         self.input = input("Please Select a Number: \n" \
             "0 - Exit\n" \
-            "1 - Teams on Specified League \n" \
-            "2 - Teams Owned by User \n" \
-            "3 - Overall Score for Team \n" \
-            "4 - Add New League With Manager \n" \
-            "5 - Create a New User\n" \
+            "1 - Update the Database \n" \
+            "2 - View the Database \n" \
+            "Input: ")
+        return self.input
+
+    #Updating Things (Add, Remove, Editing)
+    def optionA(self):
+        self.input = input("Please Select a Number: \n"\
+            "0 - Back\n"\
+            "1 - Add New League with Manager \n"\
+            "2 - Create a New User \n"\
+            "Input: ")
+        return self.input
+
+    #Viewing Things
+    def optionB(self):
+        self.input = input("Please Select a Number: \n"\
+            "0 - Back\n"\
+            "1 - View Teams in a League \n"\
+            "2 - View Teams Owned by User \n"\
+            "3 - View Overall Score by a Team \n"\
             "Input: ")
         return self.input
 
@@ -32,7 +48,8 @@ class Queries:
         self.__cur.execute(query, (league,))
         output += "Teams in League!\n"
         colnames = [desc[0] for desc in self.__cur.description]
-        output += "colnames\n"
+        for i in colnames:
+            output += "|{}|".format(i.ljust(6))
         for team in self.__cur:
             output += '{}|{}|{}|{}\n'.format(team[0].ljust(6), team[1].ljust(10), team[2].ljust(10), team[3].ljust(10))
         return output
@@ -45,7 +62,7 @@ class Queries:
         output += f"Teams Belonging to User: {user}\n"
         colnames = [desc[0] for desc in self.__cur.description]
         for i in colnames:
-            output += f"| {i} |"
+            output += "|{}|".format(i.ljust(6))
         output +="\n"
         for team in self.__cur:
             output += '{}|{}|{}|{}\n'.format(team[0].ljust(6), team[1].ljust(10), team[2].ljust(10), team[3].ljust(10))
@@ -54,18 +71,31 @@ class Queries:
 q = Queries()
 
 while q.input != 0:
-	q.menu_selection()
-	if q.input == "0":
-		break
-	elif q.input == "1":
-	    print(q.league_team())
-	elif q.input == "2":
-	    print(q.user_team())
-	elif q.input == "3":
-	    print(q.transcript())
-	elif q.input == "4":
-	    print(q.course_list())
-	elif q.input == "5":
-	    print(q.register())
-	else:
-	    print("Bad Input!")
+    q.menu_selection()
+    if q.input == "0":
+        break
+    elif q.input == "1":
+        q.optionA()
+        if q.input == "1":
+            pass
+        elif q.input == "2":
+            pass
+        elif q.input == "0":
+            q.input = -1
+        elif q.input > 2 or q.input < 0:
+            print("Bad Input!")
+    elif q.input == "2":
+        q.optionB()
+        if q.input == "1":
+            print(q.league_team())
+        elif q.input == "2":
+            print(q.user_team())
+        elif q.input == "3":
+            pass
+        elif q.input == "0":
+            q.input = -1
+        elif q.input > 3 or q.input < 0:
+            print("Bad Input!")
+
+    else:
+        print("Bad Input!")
