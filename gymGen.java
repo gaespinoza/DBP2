@@ -125,6 +125,8 @@ public class gymGen {
         while(i <= 10){
             num = String.format("%08d%n", ++i);
             num.replace("\n", "");
+            num.replace("\t", "");
+            num.replace(" ", "");
             s = "'" + num + "', " + getUsername() + ", " + getEmail() + ", " + genPassword();
             out.println("insert into users values (" + s + ");");
         }
@@ -137,6 +139,8 @@ public class gymGen {
         while(i <= 10){
             num = String.format("%08d%n", ++i);
             num.replace("\n", "");
+            num.replace("\t", "");
+            num.replace(" ", "");
             s = "'" + num + "', " + getName() + ", " + String.valueOf(2020 + rnd.nextInt(10));
             out.println("insert into gymnast values (" + s + ");");
         }
