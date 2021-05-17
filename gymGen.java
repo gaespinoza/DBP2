@@ -20,6 +20,7 @@ public class gymGen {
     private static String[] gymnasts = new String[maxGymnast];
     private static int score_id = 1;
     private static int week = 0;
+    private static String[] teams;
 
     private static Scanner openFile(String fileName) {
         Scanner in = null;
@@ -223,7 +224,8 @@ public class gymGen {
         String[] gymnasts = new String[1000];
 
         String manager = users[curr%1000];
-        inputted[index++] = manager;
+        index++;
+        inputted[index] = String.format("%08d", index+((curr-1)*10));;
         String league_id = String.format("%08d", curr); 
 
         out.println("insert into league values ('" + league_id + "', '" + manager + "', '" +  
@@ -235,8 +237,10 @@ public class gymGen {
 
         for (int i=1; i < 10; i++){
             String cu = users[(curr+i)%1000];
-            inputted[index++] = cu;
+            index++;
+            inputted[index] = String.format("%08d", index+((curr-1)*10));
             gymnasts = createTeam(out, gymnasts,  g_i, cu, league_id, index+((curr-1)*10));
+
             g_i += 5;
         }
 
