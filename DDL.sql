@@ -9,7 +9,7 @@ create table users
 create table league
         (ID                     varchar(8),
         manager_id              varchar(8),
-        name                    varchar(100)not null,
+        name                    varchar(300)not null,
         roster_size             numeric(2,0)not null,
         lineup_size             numeric(1,0)not null,
         primary key (ID),
@@ -21,7 +21,7 @@ create table team
         (ID                     varchar(8),
         user_id                 varchar(8),
         league_id               varchar(8),
-        name                    varchar(100)not null,
+        name                    varchar(300)not null,
         wins                    numeric(2,0),
         losses                  numeric(2,0),
         primary key (ID),
