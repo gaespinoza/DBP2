@@ -44,7 +44,9 @@ class Queries:
         self.__cur.execute(query, (user,))
         output += f"Teams Belonging to User: {user}\n"
         colnames = [desc[0] for desc in self.__cur.description]
-        output += colnames+"\n"
+        for i in colnames:
+            output += f"| {i} |"
+        output +="\n"
         for team in self.__cur:
             output += '{}|{}|{}|{}\n'.format(team[0].ljust(6), team[1].ljust(10), team[2].ljust(10), team[3].ljust(10))
         return output
