@@ -187,6 +187,8 @@ public class gymGen {
 
         for (int i=0; i<5; i++){
 
+            System.out.println(gl);
+
             String curr = getGymnast();
 
             while (checkIn(gymnasts, gl, curr)){
@@ -227,14 +229,12 @@ public class gymGen {
         gymnasts = createTeam(out, gymnasts, g_i, manager, league_id, index+((curr-1)*20));
 
         g_i += 5; //update this with how many gymnasts per team
-        System.out.println(index+((curr-1)*20));
 
         for (int i=1; i < 20; i++){
             String cu = users[curr+i%1000];
             inputted[index++] = cu;
             gymnasts = createTeam(out, gymnasts,  g_i, cu, league_id, index+((curr-1)*20));
             g_i += 5;
-            System.out.println(index+((curr-1)*20));
         }
     }
 
