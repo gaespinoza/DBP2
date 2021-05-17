@@ -167,7 +167,7 @@ public class gymGen {
 
     private static Boolean checkIn(String[] string, int length, String gym){
         boolean found = false;
-        for (int i = 0; i < length+1; i++){
+        for (int i = 0; i < length; i++){
             if(string[i].equals(gym)){
                 found=true;
             }
