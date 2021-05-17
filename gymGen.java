@@ -135,7 +135,7 @@ public class gymGen {
         String s = "";
         String num = "";
         String name = "";
-        while(i <= 10){
+        while(i <= maxUser){
             num = String.format("%08d", ++i);
             name = getUsername();
             s = "'" + num + "', " + name + ", " + getEmail() + ", " + genPassword();
@@ -146,7 +146,7 @@ public class gymGen {
 
 
     private static String getGymnast(){
-        return gymnasts[rnd.nextInt(10)];
+        return gymnasts[rnd.nextInt(maxGymnast)];
     }
 
     private static String getUser(){
@@ -157,7 +157,7 @@ public class gymGen {
         int i = 0;
         String s = "";
         String num = "";
-        while(i <= 10){
+        while(i <= maxGymnast){
             num = String.format("%08d", ++i);
             s = "'" + num + "', " + getName() + ", " + String.valueOf(2020 + rnd.nextInt(10));
             out.println("insert into gymnast values (" + s + ");");
@@ -172,7 +172,6 @@ public class gymGen {
                 found=true;
             }
         }
-
         return found;
     }
 
@@ -233,6 +232,7 @@ public class gymGen {
             String cu = users[curr+i%1000];
             inputted[index++] = cu;
             gymnasts = createTeam(out, gymnasts,  g_i, cu, league_id, index);
+            g_i += 5;
         }
     }
 
