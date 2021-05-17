@@ -199,7 +199,7 @@ public class gymGen {
 
 
 
-            int year = 2020 + Math.floor(date/365);
+            int year = 2020 + (int)Math.floor(date/365);
             int month = 1 + date%12;
             int day = 1 + date%28;
 
