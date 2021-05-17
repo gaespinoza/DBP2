@@ -34,7 +34,7 @@ create table team
 create table gymnast
         (ID                     varchar(8),
         name               		varchar(50) not null,
-        year                    numeric(4,0) check (year >= 2020 and year <= 2030),
+        year                    numeric(4,0) check (year >= 2000 and year <= 2030),
         primary key (ID)
         );
 
@@ -55,7 +55,7 @@ create table score
         date_score              date,
         event                   varchar(20) not null,
         score                   numeric(2,0),
-        primary key (gymnast_id, date_score, event, score),
+        primary key (gymnast_id, date_score, event),
         foreign key (gymnast_id) references gymnast (ID)
                 on delete cascade
         );

@@ -186,7 +186,7 @@ public class gymGen {
 
         out.println("insert into user_league values ('" + uid + "', '" + league_id + "');");
 
-        for (int i=0; i<5; i++){
+        for (int i=0; i<6; i++){
 
             // System.out.println(gl);
 
@@ -196,10 +196,7 @@ public class gymGen {
                 curr = getGymnast();
             }
 
-
-
-
-            int year = 2020 + rnd.nextInt(10);
+            int year = 2000 + rnd.nextInt(30);
 
 
             gymnasts[gl++] = curr;
