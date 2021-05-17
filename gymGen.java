@@ -205,7 +205,7 @@ public class gymGen {
         int index = 0;
         int g_i = 0;
         String[] inputted = new String[6];
-        String[] gymnasts = String[1000];
+        String[] gymnasts = new String[1000];
 
         String manager = users[curr%1000];
         inputted[index++] = manager;
