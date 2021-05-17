@@ -249,7 +249,7 @@ public class gymGen {
 
         createGymnasts(out);
 
-        for (i=0; i < 1; i++) {
+        for (int i=0; i < 1; i++) {
             createLeague(out, i+1);
         } 
         out.close();
