@@ -58,7 +58,7 @@ while q.input != 0:
 	elif q.input == "1":
 	    print(q.league_team())
 	elif q.input == "2":
-	    print(q.hire())
+	    print(q.user_team())
 	elif q.input == "3":
 	    print(q.transcript())
 	elif q.input == "4":
