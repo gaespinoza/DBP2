@@ -187,7 +187,7 @@ public class gymGen {
 
         for (int i=0; i<5; i++){
 
-            System.out.println(gl);
+            // System.out.println(gl);
 
             String curr = getGymnast();
 
