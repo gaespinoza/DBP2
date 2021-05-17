@@ -55,7 +55,7 @@ create table score
         date_score              date,
         event                   varchar(20) not null,
         score                   numeric(2,0),
-        primary key (gymnast_id, date_score, event),
+        primary key (gymnast_id, date_score, event, score),
         foreign key (gymnast_id) references gymnast (ID)
                 on delete cascade
         );

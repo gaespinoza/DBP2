@@ -199,9 +199,7 @@ public class gymGen {
 
 
 
-            int year = 2020 + (int)Math.floor(date/365);
-            int month = 1 + date%12;
-            int day = 1 + date%28;
+            int year = 2020 + rnd.nextInt(10);
 
 
             gymnasts[gl++] = curr;
@@ -210,7 +208,7 @@ public class gymGen {
                 + ", '" + curr + "');");
 
             out.println("insert into score values ('" + curr + "', '" + String.valueOf(year) + "-" + 
-                String.format("%02d", month) + "-" + String.format("%02d", day) + "', '" + eventArray[i]
+                String.valueOf(1 + rnd.nextInt(11)) + "-" + String.valueOf(1+rnd.nextInt(27)) + "', '" + eventArray[i]
                 + "', " + String.valueOf(50 + rnd.nextInt(40)) + ");");
 
             out.println("insert into roster values ('" + id + "', '" + curr + "');");
