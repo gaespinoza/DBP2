@@ -195,7 +195,7 @@ public class gymGen {
                 curr = getGymnast();
             }
 
-            int year = 2020 + rnd.nextInt(10);
+            int year = 2020 + rnd.nextInt(20);
 
             gymnasts[gl++] = curr;
 
