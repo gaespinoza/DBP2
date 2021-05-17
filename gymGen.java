@@ -136,7 +136,7 @@ public class gymGen {
         while(i <= 10){
             num = String.format("%08d%n", ++i);
             s = "'" + num + "', " + getName() + ", " + String.valueOf(2020 + rnd.nextInt(10));
-            out.println("insert into gymnasts values (" + s + ");");
+            out.println("insert into gymnast values (" + s + ");");
         }
     }
 
