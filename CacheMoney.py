@@ -37,6 +37,8 @@ class Queries:
             "1 - View Teams in a League \n"\
             "2 - View Teams Owned by User \n"\
             "3 - View Overall Score by a Team \n"\
+            "4 - View a Team's Lineup \n"\
+            "5 - View a Team's Roster \n"\
             "Input: ")
         return self.input
 
@@ -49,7 +51,7 @@ class Queries:
         output += "Teams in League!\n"
         colnames = [desc[0] for desc in self.__cur.description]
         for i in colnames:
-            output += "|{}|".format(i.ljust(6))
+            output += "{}|".format(i.ljust(6))
         for team in self.__cur:
             output += '{}|{}|{}|{}\n'.format(team[0].ljust(6), team[1].ljust(10), team[2].ljust(10), team[3].ljust(10))
         return output
@@ -62,10 +64,76 @@ class Queries:
         output += f"Teams Belonging to User: {user}\n"
         colnames = [desc[0] for desc in self.__cur.description]
         for i in colnames:
-            output += "|{}|".format(i.ljust(6))
+            output += "{}|".format(i.ljust(6))
         output +="\n"
         for team in self.__cur:
             output += '{}|{}|{}|{}\n'.format(team[0].ljust(6), team[1].ljust(10), team[2].ljust(10), team[3].ljust(10))
+        return output
+
+    def team_score(self):
+        output = ''
+        team = input("Which Team's Lineup do you Want to View? \ninput: ")
+        query = "select Q.name, sum(S.score) from score as S join "\
+            "(select T.name, T.id, R.gymnast_id from team as T "\
+            "join roster as R on T.id=R.team_id where T.id=%s) "\
+            "as Q on Q.gymnast_id=S.gymnast_id group by Q.name;"
+        self.__cur.execute(query, (team,))
+        output += f"Score for Team: {team}\n"
+        colnames = [desc[0] for desc in self.__cur.description]
+        for i in colnames:
+            output += "{}|".format(i.ljust(6))
+        output +="\n"
+        for team in self.__cur:
+            output += '{}|{}\n'.format(team[0].ljust(6), team[1].ljust(6)) 
+        return output
+
+    def team_lineup(self):
+        output = ''
+        team = input("Which Team's Lineup do you Want to View? \ninput: ")
+        query = "select * from lineup_slot as L where L.team_id=%s;"
+        self.__cur.execute(query, (team,))
+        output += f"Lineup for Team: {team}\n"
+        colnames = [desc[0] for desc in self.__cur.description]
+        for i in colnames:
+            output += "{}|".format(i.ljust(6))
+        output +="\n"
+        for team in self.__cur:
+            output += '{}|{}|{}|{}\n'.format(team[0].ljust(6), team[1].ljust(10), team[2].ljust(10), team[3].ljust(10))
+        return output
+
+    def team_roster(self):
+        output = ''
+        team = input("Which Team's Roster do you Want to View? \ninput: ")
+        query = "select T.name, Q.team_id, Q.name, Q.year from team as T join "\
+            "(select R.team_id, G.name, G.year from roster as R "\
+            "join gymnast as G on R.gymnast_id = G.id and R.team_id=%s) "\
+            "as Q on T.id=Q.team_id;"
+        self.__cur.execute(query, (team,))
+        output += f"Roster for Team: {team}\n"
+        colnames = [desc[0] for desc in self.__cur.description]
+        for i in colnames:
+            output += "{}|".format(i.ljust(6))
+        output +="\n"
+        for team in self.__cur:
+            output += '{}|{}|{}|{}\n'.format(team[0].ljust(6), team[1].ljust(10), team[2].ljust(10), team[3].ljust(10))
+        return output
+
+    def user_league(self):
+        output = ''
+        user = input("Which User's League Membership do you Want to View? \ninput: ")
+        query = "select U.username, Q.league_name from users as U join "\
+            "(select U.user_id, L.name as league_name from user_league as U "\
+            "join league as L on U.league_id = L.id where U.user_id = %s) "\
+            "as Q on Q.user_id=U.id;"
+        self.__cur.execute(query, (user,))
+        output += f"Leagues with User: {user}\n"
+        colnames = [desc[0] for desc in self.__cur.description]
+        for i in colnames:
+            output += "{}|".format(i.ljust(6))
+        output +="\n"
+        for team in self.__cur:
+            output += '{}|{}\n'.format(team[0].ljust(6), team[1].ljust(10))
+        
         return output
 
 q = Queries()
@@ -91,7 +159,13 @@ while q.input != 0:
         elif q.input == "2":
             print(q.user_team())
         elif q.input == "3":
-            pass
+            print(q.team_score())
+        elif q.input == '4':
+            print(q.team_lineup())
+        elif q.input == '5':
+            print(q.team_roster())
+        elif q.input == '6':
+            print(q.user_league())
         elif q.input == "0":
             q.input = -1
         elif q.input > 3 or q.input < 0:
