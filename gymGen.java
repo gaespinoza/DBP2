@@ -225,7 +225,7 @@ public class gymGen {
 
         String manager = users[curr%1000];
         index++;
-        inputted[index] = String.format("%08d", index+((curr-1)*10));;
+        inputted[index-1] = String.format("%08d", index+((curr-1)*10));;
         String league_id = String.format("%08d", curr); 
 
         out.println("insert into league values ('" + league_id + "', '" + manager + "', '" +  
@@ -238,7 +238,7 @@ public class gymGen {
         for (int i=1; i < 10; i++){
             String cu = users[(curr+i)%1000];
             index++;
-            inputted[index] = String.format("%08d", index+((curr-1)*10));
+            inputted[index-1] = String.format("%08d", index+((curr-1)*10));
             gymnasts = createTeam(out, gymnasts,  g_i, cu, league_id, index+((curr-1)*10));
 
             g_i += 5;
