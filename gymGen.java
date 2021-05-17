@@ -188,7 +188,7 @@ public class gymGen {
             gymnasts[gl++] = curr;
 
             out.println("insert in lineup_slot values ('" + id + "', '" + eventArray[i] + "', " + String.valueOf(i+1)
-                + ", '" + curr + "');")
+                + ", '" + curr + "');");
 
             out.println("insert in score values ('" + curr + "', '" + String.valueOf(year) + "-" + 
                 String.valueOf(1 + rnd.nextInt(11)) + "-" + String.valueOf(1+rnd.nextInt(27)) + "', '" + eventArray[i]
