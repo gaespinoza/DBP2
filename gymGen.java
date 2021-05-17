@@ -110,7 +110,7 @@ public class gymGen {
     }
 
     private static String genPassword(){
-        return "'" + System.out.format("%06d%n", rnd.nextInt(10000)) + "'";
+        return "'" + String.format("%06d%n", rnd.nextInt(10000)) + "'";
     }
 
     private static String getName(){
@@ -124,6 +124,7 @@ public class gymGen {
         String num = "";
         while(i <= 10){
             num = String.format("%08d%n", ++i);
+            num.replace("\n", "");
             s = "'" + num + "', " + getUsername() + ", " + getEmail() + ", " + genPassword();
             out.println("insert into users values (" + s + ");");
         }
@@ -135,6 +136,7 @@ public class gymGen {
         String num = "";
         while(i <= 10){
             num = String.format("%08d%n", ++i);
+            num.replace("\n", "");
             s = "'" + num + "', " + getName() + ", " + String.valueOf(2020 + rnd.nextInt(10));
             out.println("insert into gymnast values (" + s + ");");
         }
