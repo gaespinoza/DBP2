@@ -221,7 +221,7 @@ public class gymGen {
         inputted[index++] = manager;
         String league_id = String.format("%08d", curr); 
 
-        out.println("insert league values ('" + league_id + "', '" + manager + "', '" +  
+        out.println("insert into league values ('" + league_id + "', '" + manager + "', '" +  
             getLeague() + "', " + "6, 6);");
 
         gymnasts = createTeam(out, gymnasts, g_i, manager, league_id, index);
