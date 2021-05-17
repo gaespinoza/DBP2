@@ -165,6 +165,17 @@ public class gymGen {
         }
     }
 
+    private static Boolean checkIn(String[] string, int length, String gym){
+        boolean found = false;
+        for (int i = 0; i < length+1; i++){
+            if(string.equals(gym)){
+                found=true;
+            }
+        }
+
+        return found;
+    }
+
     private static String[] createTeam(PrintWriter out, String[] gymnasts, int gl, String uid, String league_id, int ids){
 
         String id = String.format("%08d", ids);
@@ -179,7 +190,7 @@ public class gymGen {
 
             String curr = getGymnast();
 
-            while (gymnasts.contains(curr)){
+            while (checkIn(gymnasts, gl, curr)){
                 curr = getGymnast();
             }
 
