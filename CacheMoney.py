@@ -78,7 +78,7 @@ class Queries:
             print("Cannot have a smaller line up than roster size")
             ros_size = int(input("Roster size: "))
             lin_size = int(input("Lineup size: "))
-        query = "update league set roster_size=%s, lineup_size=%s, where id='%s';"
+        query = "update league set roster_size=%s, lineup_size=%s, where id=%s;"
         try:
             self.__cur.execute(query, (ros_size,lin_size, league_id,))
         except Exception as e:
