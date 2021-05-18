@@ -6,7 +6,7 @@ import psycopg2
 class Queries:
     def __init__(self):
         self.__conn = psycopg2.connect(host="localhost", port=5432, \
-            dbname="gym_large", user="gaespi")
+            dbname="gym_small", user="gaespi")
             
         self.__cur = self.__conn.cursor()
         
@@ -91,7 +91,7 @@ class Queries:
         email = input("Name: ")
         password = "p@ssW0rd"
 
-        query = "insert into users values ('%s', '%s', '%s', '%s');"
+        query = "insert into users values (%s, %s, %s, %s);"
 
         try:
             self.__cur.execute(query, (id,name,email, password,))
@@ -118,7 +118,7 @@ class Queries:
         teamid = input("Team ID: ")
         gymid = input("Gymnast ID: ")
 
-        query = "insert into roster values('%s', '%s');"
+        query = "insert into roster values(%s, %s);"
         try:
             self.__cur.execute(query, (teamid,gymid,))
         except Exception as e:
@@ -131,7 +131,7 @@ class Queries:
         event = input("Event: ")
         lineup_slot = input("Slot: ")
 
-        query = "insert into lineup_slot values('%s', '%s', %s, '%s');"
+        query = "insert into lineup_slot values(%s, %s, %s, %s);"
 
         try:
             self.__cur.execute(query, (teamid,gymid,event,lineup_slot,))
@@ -143,8 +143,8 @@ class Queries:
         teamid = input("Team ID: ")
         gymid = input("Gymnast ID: ")
 
-        query = "delete from roster where team_id='%s' and gymnast_id='%s';"
-        query1 = "delete from lineup_slot where team_id='%s' and gymnast_id='%s';"
+        query = "delete from roster where team_id=%s and gymnast_id=%s;"
+        query1 = "delete from lineup_slot where team_id=%s and gymnast_id=%s;"
         try:
             self.__cur.execute(query, (teamid, gymid,))
             self.__cur.execute(query1, (teamid, gymid,))
@@ -155,7 +155,7 @@ class Queries:
     def delete_user(self):
         id = input("ID: ")
 
-        query = "delete from users where id='%s"
+        query = "delete from users where id=%s"
         try:
             self.__cur.execute(query, (id,))
         except Exception as e:
@@ -165,7 +165,7 @@ class Queries:
     def delete_team(self):
         id = input("ID: ")
 
-        query = "delete from team where id='%s"
+        query = "delete from team where id=%s"
         try:
             self.__cur.execute(query, (id,))
         except Exception as e:
@@ -187,7 +187,7 @@ class Queries:
     def delete_gymnast(self):
         id = input("ID: ")
 
-        query = "delete from gymnast where id='%s"
+        query = "delete from gymnast where id=%s"
         try:
             self.__cur.execute(query, (id,))
         except Exception as e:
