@@ -5,7 +5,7 @@ import java.text.DecimalFormat;
 
 public class gymGen {
     private static int maxUser = 1000, maxGymnast = 1000, maxTeam = 1000, maxLeague = 1000, 
-        maxEmail = 1000, maxEvents = 6, maxName = 1000, maxLocation = 1000, numLeague = 10000;
+        maxEmail = 1000, maxEvents = 6, maxName = 1000, maxLocation = 1000, numLeague = 25000;
     private static int maxYear = 2030, minYear = 2020;
     private static int maxID = 99999999;
     private static Random rnd = new Random();
@@ -252,7 +252,7 @@ public class gymGen {
         int team_num = 1;
         int gym_num = 1;
         fillArrays();
-        PrintWriter out = outputFile("largeRelationsInsertFile.sql");
+        PrintWriter out = outputFile("CacheMoney_large.sql");
         out.println("delete from users;");
         out.println("delete from league;");
         out.println("delete from team;");
