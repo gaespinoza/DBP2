@@ -229,7 +229,7 @@ class Queries:
         colnames = [desc[0] for desc in self.__cur.description]
         for i in colnames:
             output += "{}|".format(i.ljust(20))
-        output += "\n"
+        output += "\n\n"
         for team in self.__cur:
             output += '{}|{}|{}|{}\n'.format(team[0].ljust(20), team[1].ljust(20), team[2].ljust(20), team[3].ljust(20))
         return output
@@ -243,7 +243,7 @@ class Queries:
         colnames = [desc[0] for desc in self.__cur.description]
         for i in colnames:
             output += "{}|".format(i.ljust(20))
-        output +="\n"
+        output +="\n\n"
         for team in self.__cur:
             output += '{}|{}|{}|{}\n'.format(team[0].ljust(20), team[1].ljust(20), team[2].ljust(20), team[3].ljust(20))
         return output
@@ -260,7 +260,7 @@ class Queries:
         colnames = [desc[0] for desc in self.__cur.description]
         for i in colnames:
             output += "{}|".format(i.ljust(20))
-        output +="\n"
+        output +="\n\n"
         for team in self.__cur:
             output += '{}|{}\n'.format(team[0].ljust(20), team[1].ljust(20)) 
         return output
@@ -274,7 +274,7 @@ class Queries:
         colnames = [desc[0] for desc in self.__cur.description]
         for i in colnames:
             output += "{}|".format(i.ljust(20))
-        output +="\n"
+        output +="\n\n"
         for team in self.__cur:
             output += '{}|{}|{}|{}\n'.format(team[0].ljust(20), team[1].ljust(20), team[2].ljust(20), team[3].ljust(20))
         return output
@@ -291,7 +291,7 @@ class Queries:
         colnames = [desc[0] for desc in self.__cur.description]
         for i in colnames:
             output += "{}|".format(i.ljust(20))
-        output +="\n"
+        output +="\n\n"
         for team in self.__cur:
             output += '{}|{}|{}|{}\n'.format(team[0].ljust(20), team[1].ljust(20), team[2].ljust(20), team[3].ljust(20))
         return output
@@ -308,7 +308,7 @@ class Queries:
         colnames = [desc[0] for desc in self.__cur.description]
         for i in colnames:
             output += "{}|".format(i.ljust(20))
-        output +="\n"
+        output +="\n\n"
         for team in self.__cur:
             output += '{}|{}\n'.format(team[0].ljust(20), team[1].ljust(20))
         
@@ -328,7 +328,7 @@ class Queries:
         colnames = [desc[0] for desc in self.__cur.description]
         for i in colnames:
             output += "{}|".format(i.ljust(20))
-        output +="\n"
+        output +="\n\n"
         for team in self.__cur:
             output += '{}|{}\n'.format(team[0].ljust(20), team[1].ljust(20))
         return output
