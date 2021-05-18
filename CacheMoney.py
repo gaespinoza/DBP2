@@ -65,6 +65,7 @@ class Queries:
 
         try:
             self.__cur.execute(query, (l_id, m_id,name,roster,lineup,))
+            self.__conn.commit()
         except Exception as e:
             return ("Error in updating database: ", str(e))
         return "Successful Addition"
@@ -81,6 +82,7 @@ class Queries:
         query = "update league set roster_size=%s, lineup_size=%s where id=%s;"
         try:
             self.__cur.execute(query, (ros_size,lin_size, league_id,))
+            self.__conn.commit()
         except Exception as e:
             return ("Error in updating database: ", str(e))
         return "Successful Addition"
@@ -88,13 +90,14 @@ class Queries:
     def create_user(self):
         id = input("User id: ")
         name = input("Name: ")
-        email = input("Name: ")
+        email = input("Email: ")
         password = "p@ssW0rd"
 
         query = "insert into users values (%s, %s, %s, %s);"
 
         try:
             self.__cur.execute(query, (id,name,email, password,))
+            self.__conn.commit()
         except Exception as e:
             return ("Error in updating database: ", str(e))
         return "Successful Addition"
@@ -110,6 +113,7 @@ class Queries:
 
         try:
             self.__cur.execute(query, (t_id,u_id,l_id, name, wins, losses,))
+            self.__conn.commit()
         except Exception as e:
             return ("Error in updating database: ", str(e))
         return "Successful Addition"
@@ -121,6 +125,7 @@ class Queries:
         query = "insert into roster values(%s, %s);"
         try:
             self.__cur.execute(query, (teamid,gymid,))
+            self.__conn.commit()
         except Exception as e:
             return ("Error in updating database: ", str(e))
         return "Successful Addition"
@@ -135,6 +140,7 @@ class Queries:
 
         try:
             self.__cur.execute(query, (teamid,gymid,event,lineup_slot,))
+            self.__conn.commit()
         except Exception as e:
             return ("Error in updating database: ", str(e))
         return "Successful Addition"
@@ -148,6 +154,7 @@ class Queries:
         try:
             self.__cur.execute(query, (teamid, gymid,))
             self.__cur.execute(query1, (teamid, gymid,))
+            self.__conn.commit()
         except Exception as e:
             return ("Error in updating database: ", str(e))
         return "Successful Deletion"
@@ -158,6 +165,7 @@ class Queries:
         query = "delete from users where id=%s"
         try:
             self.__cur.execute(query, (id,))
+            self.__conn.commit()
         except Exception as e:
             return ("Error in updating database: ", str(e))
         return "Successful Deletion"
@@ -168,6 +176,7 @@ class Queries:
         query = "delete from team where id=%s"
         try:
             self.__cur.execute(query, (id,))
+            self.__conn.commit()
         except Exception as e:
             return ("Error in updating database: ", str(e))
         return "Successful Deletion"
@@ -180,6 +189,7 @@ class Queries:
         query = "insert into gymnast values(%s, %s, %s)"
         try:
             self.__cur.execute(query, (id, name, year,))
+            self.__conn.commit()
         except Exception as e:
             return ("Error in updating database: ", str(e))
         return "Successful Entry"
@@ -190,6 +200,7 @@ class Queries:
         query = "delete from gymnast where id=%s"
         try:
             self.__cur.execute(query, (id,))
+            self.__conn.commit()
         except Exception as e:
             return ("Error in updating database: ", str(e))
         return "Successful Deletion"
@@ -203,6 +214,7 @@ class Queries:
         query = "insert into score values (%s, %s, %s, %s, %s);"
         try:
             self.__cur.execute(query, (s_id, g_id, s_date, event, score,))
+            self.__conn.commit()
         except Exception as e:
             return ("Error in updating database: ", str(e))
         return "Successful Entry"
@@ -216,9 +228,10 @@ class Queries:
         output += "Teams in League!\n"
         colnames = [desc[0] for desc in self.__cur.description]
         for i in colnames:
-            output += "{}|".format(i.ljust(6))
+            output += "{}|".format(i.ljust(20))
+        output += "\n"
         for team in self.__cur:
-            output += '{}|{}|{}|{}\n'.format(team[0].ljust(6), team[1].ljust(10), team[2].ljust(10), team[3].ljust(10))
+            output += '{}|{}|{}|{}\n'.format(team[0].ljust(20), team[1].ljust(20), team[2].ljust(20), team[3].ljust(20))
         return output
 
     def user_team(self):
@@ -229,10 +242,10 @@ class Queries:
         output += f"Teams Belonging to User: {user}\n"
         colnames = [desc[0] for desc in self.__cur.description]
         for i in colnames:
-            output += "{}|".format(i.ljust(6))
+            output += "{}|".format(i.ljust(20))
         output +="\n"
         for team in self.__cur:
-            output += '{}|{}|{}|{}\n'.format(team[0].ljust(6), team[1].ljust(10), team[2].ljust(10), team[3].ljust(10))
+            output += '{}|{}|{}|{}\n'.format(team[0].ljust(20), team[1].ljust(20), team[2].ljust(20), team[3].ljust(20))
         return output
 
     def team_score(self):
@@ -246,10 +259,10 @@ class Queries:
         output += f"Score for Team: {team}\n"
         colnames = [desc[0] for desc in self.__cur.description]
         for i in colnames:
-            output += "{}|".format(i.ljust(6))
+            output += "{}|".format(i.ljust(20))
         output +="\n"
         for team in self.__cur:
-            output += '{}|{}\n'.format(team[0].ljust(6), team[1].ljust(6)) 
+            output += '{}|{}\n'.format(team[0].ljust(20), team[1].ljust(20)) 
         return output
 
     def team_lineup(self):
@@ -260,10 +273,10 @@ class Queries:
         output += f"Lineup for Team: {team}\n"
         colnames = [desc[0] for desc in self.__cur.description]
         for i in colnames:
-            output += "{}|".format(i.ljust(6))
+            output += "{}|".format(i.ljust(20))
         output +="\n"
         for team in self.__cur:
-            output += '{}|{}|{}|{}\n'.format(team[0].ljust(6), team[1].ljust(10), team[2].ljust(10), team[3].ljust(10))
+            output += '{}|{}|{}|{}\n'.format(team[0].ljust(20), team[1].ljust(20), team[2].ljust(20), team[3].ljust(20))
         return output
 
     def team_roster(self):
@@ -277,10 +290,10 @@ class Queries:
         output += f"Roster for Team: {team}\n"
         colnames = [desc[0] for desc in self.__cur.description]
         for i in colnames:
-            output += "{}|".format(i.ljust(6))
+            output += "{}|".format(i.ljust(20))
         output +="\n"
         for team in self.__cur:
-            output += '{}|{}|{}|{}\n'.format(team[0].ljust(6), team[1].ljust(10), team[2].ljust(10), team[3].ljust(10))
+            output += '{}|{}|{}|{}\n'.format(team[0].ljust(20), team[1].ljust(20), team[2].ljust(20), team[3].ljust(20))
         return output
 
     def user_league(self):
@@ -294,10 +307,10 @@ class Queries:
         output += f"Leagues with User: {user}\n"
         colnames = [desc[0] for desc in self.__cur.description]
         for i in colnames:
-            output += "{}|".format(i.ljust(6))
+            output += "{}|".format(i.ljust(20))
         output +="\n"
         for team in self.__cur:
-            output += '{}|{}\n'.format(team[0].ljust(6), team[1].ljust(10))
+            output += '{}|{}\n'.format(team[0].ljust(20), team[1].ljust(20))
         
         return output
 
@@ -314,10 +327,10 @@ class Queries:
         output += f"Free Gymnasts in League: {league}\n"
         colnames = [desc[0] for desc in self.__cur.description]
         for i in colnames:
-            output += "{}|".format(i.ljust(6))
+            output += "{}|".format(i.ljust(20))
         output +="\n"
         for team in self.__cur:
-            output += '{}|{}\n'.format(team[0].ljust(6), team[1].ljust(10))
+            output += '{}|{}\n'.format(team[0].ljust(20), team[1].ljust(20))
         return output
 
 q = Queries()
