@@ -3,7 +3,7 @@ import java.io.*;
 import java.util.Random;
 import java.text.DecimalFormat;
 
-public class gymGen {
+public class CacheMoney_generate {
     private static int maxUser = 1000, maxGymnast = 1000, maxTeam = 1000, maxLeague = 1000, 
         maxEmail = 1000, maxEvents = 6, maxName = 1000, maxLocation = 1000, numLeague = 25000;
     private static int maxYear = 2030, minYear = 2020;
