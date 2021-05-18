@@ -206,7 +206,7 @@ public class gymGen {
             out.println("insert into lineup_slot values ('" + id + "', '" + eventArray[i] + "', " + String.valueOf(i+1)
                 + ", '" + curr + "');");
 
-            out.println("insert into score values ("+ String.format("%08d", score_id++) +"', '" + curr + "', '" + String.valueOf(year) + "-" + 
+            out.println("insert into score values ('"+ String.format("%08d", score_id++) +"', '" + curr + "', '" + String.valueOf(year) + "-" + 
                 String.valueOf(1 + rnd.nextInt(11)) + "-" + String.valueOf(1+rnd.nextInt(27)) + "', '" + eventArray[i]
                 + "', " + String.valueOf(50 + rnd.nextInt(40)) + ");");
 
