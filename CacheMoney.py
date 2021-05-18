@@ -66,7 +66,7 @@ class Queries:
         try:
             self.__cur.execute(query, (l_id, m_id,name,roster,lineup,))
         except Exception as e:
-            return ("Error in updating database: ", e)
+            return ("Error in updating database: ", str(e))
         return "Successful Addition"
 
     def update_ros_lin(self):
@@ -82,7 +82,7 @@ class Queries:
         try:
             self.__cur.execute(query, (ros_size,lin_size, league_id,))
         except Exception as e:
-            return ("Error in updating database: ", e)
+            return ("Error in updating database: ", str(e))
         return "Successful Addition"
 
     def create_user(self):
@@ -96,7 +96,7 @@ class Queries:
         try:
             self.__cur.execute(query, (id,name,email, password,))
         except Exception as e:
-            return ("Error in updating database: ", e)
+            return ("Error in updating database: ", str(e))
         return "Successful Addition"
 
     def add_team_to_league(self):
@@ -111,7 +111,7 @@ class Queries:
         try:
             self.__cur.execute(query, (t_id,u_id,l_id, name, wins, losses,))
         except Exception as e:
-            return ("Error in updating database: ", e)
+            return ("Error in updating database: ", str(e))
         return "Successful Addition"
 
     def add_gymnast_to_team(self):
@@ -122,7 +122,7 @@ class Queries:
         try:
             self.__cur.execute(query, (teamid,gymid,))
         except Exception as e:
-            return ("Error in updating database: ", e)
+            return ("Error in updating database: ", str(e))
         return "Successful Addition"
 
     def add_gymnast_to_lineup(self):
@@ -136,7 +136,7 @@ class Queries:
         try:
             self.__cur.execute(query, (teamid,gymid,event,lineup_slot,))
         except Exception as e:
-            return ("Error in updating database: ", e)
+            return ("Error in updating database: ", str(e))
         return "Successful Addition"
 
     def drop_gymnast(self):
@@ -149,7 +149,7 @@ class Queries:
             self.__cur.execute(query, (teamid, gymid,))
             self.__cur.execute(query1, (teamid, gymid,))
         except Exception as e:
-            return ("Error in updating database: ", e)
+            return ("Error in updating database: ", str(e))
         return "Successful Deletion"
 
     def delete_user(self):
@@ -159,7 +159,7 @@ class Queries:
         try:
             self.__cur.execute(query, (id,))
         except Exception as e:
-            return ("Error in updating database: ", e)
+            return ("Error in updating database: ", str(e))
         return "Successful Deletion"
 
     def delete_team(self):
@@ -169,7 +169,7 @@ class Queries:
         try:
             self.__cur.execute(query, (id,))
         except Exception as e:
-            return ("Error in updating database: ", e)
+            return ("Error in updating database: ", str(e))
         return "Successful Deletion"
 
     def create_gymnast(self):
@@ -181,7 +181,7 @@ class Queries:
         try:
             self.__cur.execute(query, (id, name, year,))
         except Exception as e:
-            return ("Error in updating database: ", e)
+            return ("Error in updating database: ", str(e))
         return "Successful Entry"
 
     def delete_gymnast(self):
@@ -191,7 +191,7 @@ class Queries:
         try:
             self.__cur.execute(query, (id,))
         except Exception as e:
-            return ("Error in updating database: ", e)
+            return ("Error in updating database: ", str(e))
         return "Successful Deletion"
 
     def add_score(self):
@@ -204,7 +204,7 @@ class Queries:
         try:
             self.__cur.execute(query, (s_id, g_id, s_date, event, score,))
         except Exception as e:
-            return ("Error in updating database: ", e)
+            return ("Error in updating database: ", str(e))
         return "Successful Entry"
 
 	#return a string that contains the advisor query
