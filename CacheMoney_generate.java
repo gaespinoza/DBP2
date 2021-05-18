@@ -247,7 +247,6 @@ public class CacheMoney_generate {
     }
 
     public static void main(String[] args) {
-        System.out.println("gabe is so cute ");
         int num_leagues = 1;
         int team_num = 1;
         int gym_num = 1;
