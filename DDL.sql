@@ -14,7 +14,8 @@ create table league
         lineup_size             numeric(1,0)not null,
         primary key (ID),
         foreign key (manager_id) references users (ID)
-                on delete cascade 
+                on delete cascade,
+        check(roster_size >= lineup_size)
         );
 
 create table team
@@ -88,5 +89,6 @@ create table matchup
         foreign key(team_id) references team (ID)
                 on delete cascade,
         foreign key(opponent_id) references team (ID)
-                on delete cascade
+                on delete cascade,
+        check (team_id != opponent_id)
         );
