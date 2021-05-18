@@ -367,7 +367,7 @@ while q.input != 0:
             print(q.add_score())
         elif q.input == "0":
             q.input = -1
-        elif q.input > 2 or q.input < 0:
+        else:
             print("Bad Input!")
     elif q.input == "2":
         q.optionB()
@@ -387,7 +387,7 @@ while q.input != 0:
             print(q.avail_gymnasts())
         elif q.input == "0":
             q.input = -1
-        elif q.input > 3 or q.input < 0:
+        else:
             print("Bad Input!")
 
     else:
