@@ -6,7 +6,7 @@ import psycopg2
 class Queries:
     def __init__(self):
         self.__conn = psycopg2.connect(host="localhost", port=5432, \
-            dbname="big_b", user="gaespi")
+            dbname="gym_large", user="gaespi")
             
         self.__cur = self.__conn.cursor()
         
@@ -74,11 +74,10 @@ class Queries:
         lin_size = (input("Lineup size: "))
         league_id = input("league id: ")
 
-        while(lin_size>ros_size){
+        while(lin_size>ros_size):
             print("Cannot have a smaller line up than roster size")
             ros_size = int(input("Roster size: "))
             lin_size = int(input("Lineup size: "))
-        }
         query = "update league set roster_size=%s, lineup_size=%s, where id='%s';"
         try:
             self.__cur.execute(query, (ros_size,lin_size, league_id,))
